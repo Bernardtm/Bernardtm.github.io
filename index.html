@@ -67,32 +67,30 @@
         document.getElementById(elementId).innerHTML += text.charAt(index); 
       }, index * speed);
       if (index === textLength - 1) {
-        runAfter();
+        setTimeout(runAfter, textLength * speed);
       }
     }
   }
 
   function loadTheMatrix() {
     hello();
-    name();
+    //name();
     //job();
   }
 
   function hello() {
-    let callback = () => console.log('aaa');
-    typeWriter('demo', 'Hello, welcome to my website! Press any key to continue...', callback);
+    typeWriter('demo', 'Hello, welcome to my website! Press any key to continue...', name());
   }
 
   function name() {
-    let callbackC = () => console.log('aaa');
-    let callback = () => typeWriter('namevalue', 'Bernard', callbackC);
+    let callback = () => typeWriter('namevalue', 'Bernard', job());
     typeWriter('name', 'My name is ', callback);
   }
 
-  //function job() {
-    //typeWriter('job', 'I am a ');
-    //typeWriter('jobvalue', 'Software Developer');
-  //}
+  function job() {
+    let callback = () => typeWriter('jobvalue', 'Software Developer');
+    typeWriter('job', 'I am a ', callback);
+  }
 
 
   </script>

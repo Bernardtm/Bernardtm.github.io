@@ -11,6 +11,7 @@
 
   <style>
     body {
+      background-color: black;
       padding-top: 5rem;
     }
 
@@ -34,58 +35,52 @@
       }
     }
 
+    .blink {
+      animation: blinker 0.6s linear infinite;
+      color: lime;
+      font-size: 30px;
+      font-weight: bold;
+      font-family: sans-serif;
+      }
+      @keyframes blinker {  
+      50% { opacity: 0; }
+      }
+
+    #terminal {
+      color: lime; 
+      font-weight: bold; 
+      font-size: 20px; 
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
+    }
+
   </style>
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Bernardtm</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="beginner.html">Beginner</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Repositories</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-    </div>
+<body onload="typeWriter()">
+  <nav class="navbar navbar-expand-md fixed-top">
+    <a class="navbar-brand" href="#" style="color:white; font-weight: bold;"> Bernardtm - Web Page </a>
   </nav>
 
-  <main role="main" class="container">
+  
+    <main role="main" class="container" id="terminal" >
+      > <span id="demo"></span><span class="blink">_</span>
+    </main>
 
-    <div class="starter-template">
-      <h1>Welcome to my personal page!</h1>
-      <p class="lead">My name is Bernard and I started working as a developer in the beginning of 2018.<br/>
-        I learned a lot in my first job as a developer (Git, Java RestEasy, VueJS, Jenkins, Couchdb, Redis, Golang, Maven, Springboot, docker, kubernetes).<br/>
-        Later, on the next job I learned more (ReactJS and NodeJS), and I also started studying the cloud providers (mainly AWS).<br/>
-        I had some more experience with Jenkins (using Jenkins shared library) and Openshift.<br/>
-      </p>
-    </div>
 
-    <div class="starter-template alert alert-light" role="alert">
-      Navigation and search functions are intentionally not implemented.
-    </div>
-
-  </main><!-- /.container -->
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+  var i = 0;
+  var txt = 'Hello, welcome to my website! Press any key to continue...';
+  var speed = 100;
+  
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("demo").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  </script>
+  
 </body>
 
 </html>

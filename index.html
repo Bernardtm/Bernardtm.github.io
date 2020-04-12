@@ -32,7 +32,7 @@
   </style>
 </head>
 
-<body onload="typeWriter(); typeWriterName(); typeWriterJob()">
+<body onload="loadTheMatrix()">
   <main role="main" class="container" id="terminal" >
     > <span id="demo"></span><span class="blink">_</span>
   </main>
@@ -57,58 +57,45 @@
     50%</p>
   </main>
 <script>
-  var i = 0;
-  var txt = "Hello, welcome to my website! Press any key to continue...";
-  var speed = 100;
-  
-  function typeWriter() {
-    if (i < txt.length) {
-      document.getElementById("demo").innerHTML += txt.charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
+  function typeWriter(elementId, text, runAfter) {
+    console.log(runAfter);
+    let speed = 100;
+    let textLength = text.length;
+    for (let index = 0; index < textLength; index++) {
+      setTimeout(function() 
+      { 
+        document.getElementById(elementId).innerHTML += text.charAt(index); 
+      }, index * speed);
+      if (index === textLength - 1) {
+        runAfter();
+      }
     }
   }
-    var iName = 0;
-    var iNameValue = 0;
-    var txtName = "My name is ";
-    var txtNameValue = "Bernard";
-  
-    
-    function typeWriterName() {
-      if (iName < txtName.length) {
-        document.getElementById("name").innerHTML += txtName.charAt(iName);
-        iName++;
-        setTimeout(typeWriterName, speed);
-      } else {
-        if (iNameValue < txtNameValue.length) {
-          document.getElementById("namevalue").innerHTML += txtNameValue.charAt(iNameValue);
-          iNameValue++;
-          setTimeout(typeWriterName, speed);
-        } 
-      }
-    }
 
-    var iJob = 0;
-    var iJobValue = 0;
-    var txtJob = "I am a ";
-    var txtJobValue = "Software Developer";
-  
-    
-    function typeWriterJob() {
-      if (iJob < txtJob.length) {
-        document.getElementById("job").innerHTML += txtJob.charAt(iJob);
-        iJob++;
-        setTimeout(typeWriterJob, speed);
-      } else {
-        if (iJobValue < txtJobValue.length) {
-          document.getElementById("jobvalue").innerHTML += txtJobValue.charAt(iJobValue);
-          iJobValue++;
-          setTimeout(typeWriterJob, speed);
-        } 
-      }
-    }
-    
-    </script>
+  function loadTheMatrix() {
+    hello();
+    name();
+    //job();
+  }
+
+  function hello() {
+    let callback = () => console.log('aaa');
+    typeWriter('demo', 'Hello, welcome to my website! Press any key to continue...', callback);
+  }
+
+  function name() {
+    let callbackC = () => console.log('aaa');
+    let callback = () => typeWriter('namevalue', 'Bernard', callbackC);
+    typeWriter('name', 'My name is ', callback);
+  }
+
+  //function job() {
+    //typeWriter('job', 'I am a ');
+    //typeWriter('jobvalue', 'Software Developer');
+  //}
+
+
+  </script>
   
 </body>
 

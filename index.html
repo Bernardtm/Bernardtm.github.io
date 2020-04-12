@@ -4,35 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Bernard - Dev</title>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Bernardtm - Dev</title>
 
   <style>
     body {
       background-color: black;
-      padding-top: 5rem;
-    }
-
-    .starter-template {
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
-
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
     }
 
     .blink {
@@ -56,20 +32,33 @@
   </style>
 </head>
 
-<body onload="typeWriter()">
-  <nav class="navbar navbar-expand-md fixed-top">
-    <a class="navbar-brand" href="#" style="color:white; font-weight: bold;"> Bernardtm - Web Page </a>
-  </nav>
+<body onload="typeWriter(); typeWriterName(); typeWriterJob()">
+  <main role="main" class="container" id="terminal" >
+    > <span id="demo"></span><span class="blink">_</span>
+  </main>
 
-  
-    <main role="main" class="container" id="terminal" >
-      > <span id="demo"></span><span class="blink">_</span>
-    </main>
+  <main role="main" class="container" id="terminal" >
+    <p><span id="name"></span> <span id="namevalue" style="color:cyan;"></span></p>
+    <p><span id="job"></span> <span id="jobvalue" style="color:darkorchid;"></span></p>
+  </main>
 
-
+  <main role="main" class="container" id="terminal" >
+    My skills are:<br/>
+    <p style="color:orange;">Java<br/>
+    <progress value="50" max="100">50%</progress>
+    50%</p>
+    <p style="color:greenyellow;">Javascript:<br/>
+    60%</p>
+    <p style="color:white;">Jenkins:<br/>
+    70%</p>
+    <p style="color:rgb(20, 100, 248);">Docker:<br/>
+    80%</p>
+    <p style="color:rgb(43, 22, 233);">Kubernetes:<br/>
+    50%</p>
+  </main>
 <script>
   var i = 0;
-  var txt = 'Hello, welcome to my website! Press any key to continue...';
+  var txt = "Hello, welcome to my website! Press any key to continue...";
   var speed = 100;
   
   function typeWriter() {
@@ -79,7 +68,47 @@
       setTimeout(typeWriter, speed);
     }
   }
-  </script>
+    var iName = 0;
+    var iNameValue = 0;
+    var txtName = "My name is ";
+    var txtNameValue = "Bernard";
+  
+    
+    function typeWriterName() {
+      if (iName < txtName.length) {
+        document.getElementById("name").innerHTML += txtName.charAt(iName);
+        iName++;
+        setTimeout(typeWriterName, speed);
+      } else {
+        if (iNameValue < txtNameValue.length) {
+          document.getElementById("namevalue").innerHTML += txtNameValue.charAt(iNameValue);
+          iNameValue++;
+          setTimeout(typeWriterName, speed);
+        } 
+      }
+    }
+
+    var iJob = 0;
+    var iJobValue = 0;
+    var txtJob = "I am a ";
+    var txtJobValue = "Software Developer";
+  
+    
+    function typeWriterJob() {
+      if (iJob < txtJob.length) {
+        document.getElementById("job").innerHTML += txtJob.charAt(iJob);
+        iJob++;
+        setTimeout(typeWriterJob, speed);
+      } else {
+        if (iJobValue < txtJobValue.length) {
+          document.getElementById("jobvalue").innerHTML += txtJobValue.charAt(iJobValue);
+          iJobValue++;
+          setTimeout(typeWriterJob, speed);
+        } 
+      }
+    }
+    
+    </script>
   
 </body>
 

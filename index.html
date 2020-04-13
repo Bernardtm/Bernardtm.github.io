@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Bernardtm - Dev</title>
+  <title>Bernardtm - Portfolio</title>
 
   <style>
     body {
@@ -43,18 +43,28 @@
   </main>
 
   <main role="main" class="container" id="terminal" >
-    My skills are:<br/>
-    <p style="color:orange;">Java<br/>
-    <progress value="50" max="100">50%</progress>
-    50%</p>
-    <p style="color:greenyellow;">Javascript:<br/>
-    60%</p>
-    <p style="color:white;">Jenkins:<br/>
-    70%</p>
-    <p style="color:rgb(20, 100, 248);">Docker:<br/>
-    80%</p>
-    <p style="color:rgb(43, 22, 233);">Kubernetes:<br/>
-    50%</p>
+    <span id="skills"></span><br/>
+    <p style="color:orange;">
+      <span id="skill1"></span><br/>
+      <span id="skill1pct"></span>
+      <!--<progress value="50" max="100"></progress> -->
+    </p>
+    <p style="color:greenyellow;">
+      <span id="skill2"></span><br/>
+      <span id="skill2pct"></span>
+    </p>
+    <p style="color:white;">
+      <span id="skill3"></span><br/>
+      <span id="skill3pct"></span>
+    </p>
+    <p style="color:rgb(20, 100, 248);">
+      <span id="skill4"></span><br/>
+      <span id="skill4pct"></span>
+    </p>
+    <p style="color:rgb(43, 22, 233);">
+      <span id="skill5"></span><br/>
+      <span id="skill5pct"></span>
+    </p>
   </main>
 <script>
   function typeWriter(elementId, text, runAfter) {
@@ -65,33 +75,57 @@
       setTimeout(function() 
       { 
         document.getElementById(elementId).innerHTML += text.charAt(index); 
+        if (index === textLength - 1) {
+          setTimeout(runAfter, speed);
+        }
       }, index * speed);
-      if (index === textLength - 1) {
-        setTimeout(runAfter, textLength * speed);
-      }
+      
     }
   }
 
   function loadTheMatrix() {
     hello();
-    //name();
-    //job();
   }
 
   function hello() {
-    typeWriter('demo', 'Hello, welcome to my website! Press any key to continue...', name());
+    let callback = () => name();
+    typeWriter('demo', 'Hello, welcome to my website! Press any key to continue...', callback);
   }
 
   function name() {
-    let callback = () => typeWriter('namevalue', 'Bernard', job());
+    let callbackJob = () => job();
+    let callback = () => typeWriter('namevalue', 'Bernard', callbackJob);
     typeWriter('name', 'My name is ', callback);
   }
 
   function job() {
-    let callback = () => typeWriter('jobvalue', 'Software Developer');
+    let callbackSkills = () => skills();
+    let callback = () => typeWriter('jobvalue', 'Software Developer', callbackSkills);
     typeWriter('job', 'I am a ', callback);
   }
 
+  function skills() {
+    let callback = () => skillsDetails();
+    typeWriter('skills', 'My skills are:', callback);
+  }
+
+  function skillsDetails() {
+    let callback = () => {};
+    let callbackPercentage = () => skillsDetailsPercentage();
+    typeWriter('skill1', 'Java', callback);
+    typeWriter('skill2', 'Javascript', callback);
+    typeWriter('skill3', 'Jenkins', callback);
+    typeWriter('skill4', 'Docker', callback);
+    typeWriter('skill5', 'Kubernetes', callbackPercentage);
+  }
+  function skillsDetailsPercentage() {
+    let callback = () => {};
+    typeWriter('skill1pct', '50%', callback);
+    typeWriter('skill2pct', '60%', callback);
+    typeWriter('skill3pct', '70%', callback);
+    typeWriter('skill4pct', '80%', callback);
+    typeWriter('skill5pct', '50%', callback);
+  }
 
   </script>
   

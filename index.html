@@ -4,6 +4,8 @@
 <head>
 <!-- Service Worker Reference -->
 <script>
+
+/*
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('/serviceworker.js', { scope: '/' })
@@ -17,6 +19,7 @@ if ('serviceWorker' in navigator) {
             console.info('Developer for Life Service Worker Ready');
         });
 }
+*/
 </script>
 
 <!-- Hotjar Tracking Code for https://bernardtm.github.io -->
@@ -51,7 +54,7 @@ if ('serviceWorker' in navigator) {
   <link rel="canonical" href="https://bernardtm.github.io">
   <link rel="manifest" href="manifest.json">
   <amp-install-serviceworker
-	src="/sw.js"
+	src="serviceworker.js"
 	data-iframe-src="https://ampbyexample.com/sw.html"
 	layout="nodisplay">
 </amp-install-serviceworker>

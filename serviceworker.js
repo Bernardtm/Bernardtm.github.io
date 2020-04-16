@@ -28,6 +28,7 @@ const NOT_FOUND_CACHE_FILES = [
 const OFFLINE_PAGE = '/offline/';
 const NOT_FOUND_PAGE = '/404.html';
 
+const CACHE_VERSION = 1;
 const CACHE_VERSIONS = {
   assets: 'assets-v' + CACHE_VERSION,
   content: 'content-v' + CACHE_VERSION,
@@ -47,3 +48,22 @@ const MAX_TTL = {
 const CACHE_BLACKLIST = [
   (str) => !str.startsWith('https://bernardtm.github.io')
 ];
+
+self.addEventListener('install', function(e) {
+  e.waitUntil(
+    caches.open('video-store').then(function(cache) {
+      return cache.addAll([
+        '/index.html'
+      ]);
+    })
+  );
+});
+
+self.addEventListener('fetch', function(e) {
+  console.log(e.request.url);
+  e.respondWith(
+    caches.match(e.request).then(function(response) {
+      return response || fetch(e.request);
+    })
+  );
+});

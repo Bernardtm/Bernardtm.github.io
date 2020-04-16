@@ -45,5 +45,5 @@ const MAX_TTL = {
 };
 
 const CACHE_BLACKLIST = [
-  (str) => !str.startsWith('https://blog.jeremylikness.com')
+  (str) => !str.startsWith('https://bernardtm.github.io')
 ];

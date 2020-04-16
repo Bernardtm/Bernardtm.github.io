@@ -58,6 +58,17 @@ if ('serviceWorker' in navigator) {
 	data-iframe-src="https://ampbyexample.com/sw.html"
 	layout="nodisplay">
 </amp-install-serviceworker>
+<script>
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI notify the user they can add to home screen
+  showInstallPromotion();
+  console.log('Before install');
+});
+</script>
 
   <style>
     body {
@@ -124,6 +135,12 @@ if ('serviceWorker' in navigator) {
     <p><a href="https://linkedin.com/in/bernard-mendes-dev">LinkedIn</a></p>
     <p><a href="#">Ir para o topo /\</a></p>
   </main>
+
+
+
+  <button class="add-button">Add to home screen</button>
+
+
 <script>
   function typeWriter(elementId, text, runAfter) {
     console.log(runAfter);

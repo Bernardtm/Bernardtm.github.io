@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 <!-- Service Worker Reference -->
@@ -22,21 +22,9 @@ if ('serviceWorker' in navigator) {
 */
 </script>
 
-<!-- Hotjar Tracking Code for https://bernardtm.github.io -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1770324,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163737818-1"></script>
-  <script>
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-163737818-1"></script>
+  <script defer>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -45,7 +33,7 @@ if ('serviceWorker' in navigator) {
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Bernardtm - Portfolio</title>
+  <title>Bernardtm</title>
   <meta name="description" content="Página de portfólio de Bernard Mendes.">
   <meta name=”robots” content="index, follow">
   <meta charset="UTF-8">
@@ -54,181 +42,166 @@ if ('serviceWorker' in navigator) {
   <link rel="canonical" href="https://bernardtm.github.io">
   <link rel="manifest" href="manifest.json">
   <amp-install-serviceworker
-	src="serviceworker.js"
-	data-iframe-src="https://ampbyexample.com/sw.html"
-	layout="nodisplay">
-</amp-install-serviceworker>
-
-
+    src="serviceworker.js"
+    data-iframe-src="https://bernardtm.github.io"
+    layout="nodisplay"
+  >
+  </amp-install-serviceworker>
   <style>
     body {
-      background-color: black;
-    }
-
-    .blink {
-      animation: blinker 0.6s linear infinite;
-      color: lime;
-      font-size: 30px;
+      background-color: #282a36;
       font-weight: bold;
-      font-family: sans-serif;
-      }
-      @keyframes blinker {  
-      50% { opacity: 0; }
-      }
-
-    #terminal {
-      color: lime; 
-      font-weight: bold; 
-      font-size: 20px; 
-      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
+      font-size: 20px;
     }
     .add-button {
       position: absolute;
       top: 1px;
       left: 1px;
     }
+    a {
+      text-decoration: none;
+      color: #ff79c6;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .flex-container > div {
+      margin-top: 10px;
+    }
+    #links, #portfolio {
+      display: none;
+    }
+    .content-aside {
+      background-color: #44475a;
+      padding: 30px 50px;
+      border-radius: 10px;
+      margin-left: 50px;
+      margin-top: 50px;
+      width: 50vw;
+    }
+    .text-orange {
+      color: #ffb86c;
+    }
+    .text-green {
+      color: #50fa7b;
+    }
+    .text-cyan {
+      color: #8be9fd;
+    }
+    .text-red {
+      color: #ff5555;
+    }
+    .text-purple {
+      color: #bd93f9;
+    }
+    .text-pink {
+      color: #ff79c6;
+    }
+    .text-yellow {
+      color: #f1fa8c;
+    }
+    .text-white {
+      color: #f8f8f2;
+    }
   </style>
+  <script defer>
+    const changeContent = (id) => {
+      const aboutme = document.getElementById('aboutme');
+      const links = document.getElementById('links');
+      const portfolio = document.getElementById('portfolio');
+      if (id === 'aboutme') {
+        aboutme.style.display = 'block';
+        links.style.display = 'none';
+        portfolio.style.display = 'none';
+      } else if (id === 'links') {
+        aboutme.style.display = 'none';
+        links.style.display = 'block';
+        portfolio.style.display = 'none';
+      } else if (id === 'portfolio') {
+        aboutme.style.display = 'none';
+        links.style.display = 'none';
+        portfolio.style.display = 'block';
+      }
+    }
+  </script>
 </head>
 
-<body onload="loadTheMatrix()">
-    <button class="add-button">Add to home screen</button>
-
-
-  <main role="main" class="container" id="terminal" >
-    <h1 style="font-size: 20px;">
-      > <span id="demo"></span><span class="blink">_</span>
-    </h1>
+<body>
+  <main style="display: flex; flex-wrap: wrap;">
+    <section style="background-color: #44475a; padding: 30px 50px; border-radius: 10px; margin-left: 50px; margin-top: 50px;">
+      <header>
+        <h1 class="text-orange">
+          Bernardtm
+        </h1>
+      </header>
+      <nav class="flex-container text-yellow">
+        <div><a onClick="changeContent('aboutme')">ABOUT ME</a></div>
+        <div><a onClick="changeContent('links')">LINKS</a></div>
+        <div><a onClick="changeContent('portfolio')">PORTFOLIO</a></div>
+      </nav>
+      <footer style="margin-top: 50px;">
+        <div class="text-white" style="font-size: 12px;">
+          @2023
+          <button class="add-button">Add to home screen</button>
+        </div>
+      </footer>
+    </section>
+    <aside id="aboutme" class="content-aside" aria-labelledby="aboutme">
+      <h2 class="text-purple">About Me</h2>
+      <p class="text-green">
+        I'm a software engineer from Rio de Janeiro, Brazil. I'm passionate about technology and I love to learn new things.
+      </p>
+      <h3 class="text-purple">What I'm Doing</h3>
+      <p class="text-green">
+        Web Development: VueJS, Java<br/>
+        DevOps: Gitlab, Jenkins, Docker, Kubernetes
+      </p>
+    </aside>
+    <aside id="links" class="content-aside" aria-labelledby="links">
+      <h2 style="color: #50fa7b">Links</h2>
+      <div><a href="https://replit.com/@Bernardtm" target="_blank">REPLIT</a></div>
+      <div><a href="https://www.beecrowd.com.br/judge/pt/profile/774715" target="_blank">BEECROWD</a></div>
+      <div><a href="https://profile.codersrank.io/user/bernardtm" target="_blank">CODERSRANK</a></div>
+      <div><a href="https://www.linkedin.com/in/bernard-mendes-dev/">LINKEDIN</a></div>
+    </aside>
+    <aside id="portfolio" class="content-aside" aria-labelledby="portfolio">
+      <h2 style="color: #50fa7b">Portfolio</h2>
+    </aside>
   </main>
 
-  <main role="main" class="container" id="terminal" >
-    <p><span id="name"></span> <span id="namevalue" style="color:cyan;"></span></p>
-    <p><span id="job"></span> <span id="jobvalue" style="color:darkorchid;"></span></p>
-  </main>
-
-  <main role="main" class="container" id="terminal" >
-    <span id="skills"></span><br/>
-    <p style="color:orange;">
-      <span id="skill1"></span><br/>
-      <span id="skill1pct"></span>
-      <!--<progress value="50" max="100"></progress> -->
-    </p>
-    <p style="color:greenyellow;">
-      <span id="skill2"></span><br/>
-      <span id="skill2pct"></span>
-    </p>
-    <p style="color:white;">
-      <span id="skill3"></span><br/>
-      <span id="skill3pct"></span>
-    </p>
-    <p style="color:rgb(20, 100, 248);">
-      <span id="skill4"></span><br/>
-      <span id="skill4pct"></span>
-    </p>
-    <p style="color:rgb(43, 22, 233);">
-      <span id="skill5"></span><br/>
-      <span id="skill5pct"></span>
-    </p>
-    <p><a href="https://github.com/bernardtm">GitHub</a></p>
-    <p><a href="https://linkedin.com/in/bernard-mendes-dev">LinkedIn</a></p>
-    <p><a href="#">Ir para o topo /\</a></p>
-  </main>
-
-
-
-  
-<script>
-  function typeWriter(elementId, text, runAfter) {
-    console.log(runAfter);
-    let speed = 100;
-    let textLength = text.length;
-    for (let index = 0; index < textLength; index++) {
-      setTimeout(function() 
-      { 
-        document.getElementById(elementId).innerHTML += text.charAt(index); 
-        if (index === textLength - 1) {
-          setTimeout(runAfter, speed);
-        }
-      }, index * speed);
-      
-    }
-  }
-
-  function loadTheMatrix() {
-    hello();
-  }
-
-  function hello() {
-    let callback = () => name();
-    typeWriter('demo', 'Hello, welcome to my website! Press any key to continue...', callback);
-  }
-
-  function name() {
-    let callbackJob = () => job();
-    let callback = () => typeWriter('namevalue', 'Bernard', callbackJob);
-    typeWriter('name', 'My name is ', callback);
-  }
-
-  function job() {
-    let callbackSkills = () => skills();
-    let callback = () => typeWriter('jobvalue', 'Software Developer', callbackSkills);
-    typeWriter('job', 'I am a ', callback);
-  }
-
-  function skills() {
-    let callback = () => skillsDetails();
-    typeWriter('skills', 'My skills are:', callback);
-  }
-
-  function skillsDetails() {
-    let callback = () => {};
-    let callbackPercentage = () => skillsDetailsPercentage();
-    typeWriter('skill1', 'Java', callback);
-    typeWriter('skill2', 'Javascript', callback);
-    typeWriter('skill3', 'Jenkins', callback);
-    typeWriter('skill4', 'Docker', callback);
-    typeWriter('skill5', 'Kubernetes', callbackPercentage);
-  }
-  function skillsDetailsPercentage() {
-    let callback = () => {};
-    typeWriter('skill1pct', '50%', callback);
-    typeWriter('skill2pct', '60%', callback);
-    typeWriter('skill3pct', '70%', callback);
-    typeWriter('skill4pct', '80%', callback);
-    typeWriter('skill5pct', '50%', callback);
-  }
-
-  </script>
-  
-  <script>
+  <script defer>
       let deferredPrompt;
-      const addBtn = document.querySelector('.add-button');
-      addBtn.style.display = 'none';
-      
-      window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent Chrome 67 and earlier from automatically showing the prompt
-        e.preventDefault();
-        // Stash the event so it can be triggered later.
-        deferredPrompt = e;
-        // Update UI to notify the user they can add to home screen
-        addBtn.style.display = 'block';
-      
-        addBtn.addEventListener('click', (e) => {
-          // hide our user interface that shows our A2HS button
-          addBtn.style.display = 'none';
-          // Show the prompt
-          deferredPrompt.prompt();
-          // Wait for the user to respond to the prompt
-          deferredPrompt.userChoice.then((choiceResult) => {
-              if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the A2HS prompt');
-              } else {
-                console.log('User dismissed the A2HS prompt');
-              }
-              deferredPrompt = null;
-            });
-        });
+    const addBtn = document.querySelector('.add-button');
+    addBtn.style.display = 'none';
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI to notify the user they can add to home screen
+      addBtn.style.display = 'block';
+    
+      addBtn.addEventListener('click', (e) => {
+        // hide our user interface that shows our A2HS button
+        addBtn.style.display = 'none';
+        // Show the prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the A2HS prompt');
+            } else {
+              console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+          });
       });
-      </script>
+    });
+  </script>
 </body>
-
 </html>

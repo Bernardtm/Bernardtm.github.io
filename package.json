@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "gh-pages": "astro build && cp -R dist/* docs"
   },
   "dependencies": {
     "@astrojs/mdx": "^3.1.3",

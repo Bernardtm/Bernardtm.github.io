@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Max performance website</title>
+    <!-- JavaScript to load header -->
+    <script>
+        fetch('commons/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
+    <!-- JavaScript to load sidebar -->
+    <script>
+        fetch('commons/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading sidebar:', error));
+    </script>
+</head>
+<body>
+
+<!-- Container for header -->
+<div id="header-container"></div>
+
+<div id="sidebar-container"></div>
+
+<!-- Main content -->
+<main id="main">
+    Main!
+</main>
+<script>
+function w3_toggle() {
+    const isOpen = document.getElementById("main").style.marginLeft === "25%";
+    if (isOpen) {
+        document.getElementById("main").style.marginLeft = "0%";
+        document.getElementById("mySidebar").style.display = "none";
+    } else {
+        document.getElementById("main").style.marginLeft = "25%";
+        document.getElementById("mySidebar").style.width = "25%";
+        document.getElementById("mySidebar").style.display = "block";
+    }
+}
+</script>
+<script>
+function loadPage(page) {
+    fetch(`pages/${page}.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('main').innerHTML = data;
+            })
+            .catch(error => console.error(`Error loading page: ${page}`, error));
+}
+</script>
+
+</body>
+</html>

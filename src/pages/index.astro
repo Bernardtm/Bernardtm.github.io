@@ -1,23 +1,7 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Layout from "../layouts/ContentLayout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, visitor!</h1>
-			<p>
-				Welcome to my official <a href="/about">blog</a>. I'm going to share my experience learning rust.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout>
+	<p>Welcome to my site.</p>
+</Layout>

@@ -1,0 +1,72 @@
+---
+const { item, level, parentHref } = Astro.props;
+const baseColor = [32, 65, 118];
+
+// Function to lighten color by level (clamps at 255)
+function lightenRGB([r, g, b]: number[], level: number) {
+  const factor = 15 * (level - 1); // 15 units lighter per level
+  const newR = Math.min(r + factor, 255);
+  const newG = Math.min(g + factor, 255);
+  const newB = Math.min(b + factor, 255);
+  return `rgb(${newR}, ${newG}, ${newB})`;
+}
+
+const backgroundColor = lightenRGB(baseColor, level);
+---
+{
+item.subitems ? 
+(
+<button class="sidebar-item" data-toggle style={`background-color: ${backgroundColor};`}>
+    {item.name}
+</button>
+<div class="sidebar-subitems" style="padding-left: ${level * 10}px;">
+  {item.subitems.map((subitem) => (
+    <Astro.self item={subitem} level={level + 1} parentHref={parentHref ? `${parentHref}/${item.href}` : item.href} />
+  ))}
+</div>
+)
+: (
+<button class="sidebar-item" style={`background-color: ${backgroundColor};`}>
+  <a href={`/content/${parentHref}/${item.href}`}>{item.name}</a>
+</button>
+)
+}
+
+<style>  
+    .sidebar-item {
+      color: #fff;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+    }
+  
+    .sidebar-subitems {
+      display: none;
+    }
+  
+    .sidebar-subitems.active {
+      display: block;
+    }
+    button a, a:visited {
+        text-decoration: none;
+        color: #fff;
+    }
+  </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggles = document.querySelectorAll("[data-toggle]");
+  
+      toggles.forEach(button => {
+        button.addEventListener("click", () => {
+          const next = button.nextElementSibling;
+          if (next && next.classList.contains("sidebar-subitems")) {
+            next.classList.toggle("active");
+          }
+        });
+      });
+    });
+  </script>
+  

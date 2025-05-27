@@ -1,31 +1,12 @@
 ---
 // Astro component
-const list = [
-    {
-        name: "PHP",
-        subitems: [
-            "PHP 1", "PHP 2"
-        ]
-    },
-    {
-        name: "JavaScript",
-        subitems: [
-            "JavaScript 1", "JavaScript 2"
-        ]
-    },
-]
+import list from "./sidebar.json";
+import MenuItem from "./MenuItem.astro";
 ---
 
 <aside class="sidebar">
     {list.map((item) => (
-        <button class="sidebar-item" data-toggle>
-            {item.name}
-        </button>
-        <div class="sidebar-subitems">
-            {item.subitems.map((subitem) => (
-                <button class="sidebar-subitem">{subitem}</button>
-            ))}
-        </div>
+        <MenuItem item={item} level={1} />
     ))}
 </aside>
 
@@ -33,49 +14,5 @@ const list = [
   .sidebar {
     width: 200px;
   }
-
-  .sidebar-item {
-    background-color: rgb(32, 65, 118);
-    color: #fff;
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-  }
-
-  .sidebar-subitems {
-    display: none;
-    background-color: rgb(81, 98, 126);
-  }
-
-  .sidebar-subitem {
-    width: 100%;
-    height: 35px;
-    padding: 10px;
-    background-color: inherit;
-    color: #fff;
-    border: none;
-    text-align: left;
-  }
-
-  .sidebar-subitems.active {
-    display: block;
-  }
 </style>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggles = document.querySelectorAll("[data-toggle]");
-
-    toggles.forEach(button => {
-      button.addEventListener("click", () => {
-        const next = button.nextElementSibling;
-        if (next && next.classList.contains("sidebar-subitems")) {
-          next.classList.toggle("active");
-        }
-      });
-    });
-  });
-</script>

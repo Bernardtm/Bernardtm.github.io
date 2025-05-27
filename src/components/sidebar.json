@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Gestão",
+        "href": "gestao",
+        "subitems": [
+            {"name": "BPMN", "href": "bpmn"},
+            {"name": "SCRUM", "href": "scrum"},
+            {"name": "Kanban", "href": "kanban"},
+            {"name": "Lean", "href": "lean"},
+            {"name": "Agile", "href": "agile"}
+        ]
+    },
+    {
+        "name": "Desenvolvimento",
+        "href": "desenvolvimento",
+        "subitems": [
+            {
+                "name": "Linguagens de Programação",
+                "href": "linguagens-de-programacao",
+                "subitems": [
+                    {"name": "Python", "href": "python"},
+                    {"name": "JavaScript", "href": "javascript"},
+                    {"name": "TypeScript", "href": "typescript"},
+                    {"name": "Java", "href": "java"},
+                    {"name": "C#", "href": "csharp"}
+                ]
+            },
+            {"name": "Arquitetura de Software", "href": "arquitetura-de-software"},
+            {"name": "Design Patterns", "href": "design-patterns"},
+            {"name": "Testes", "href": "testes"},
+            {"name": "Padrões de Projeto", "href": "padroes-de-projeto"}
+        ]
+    },
+    {
+        "name": "Infra",
+        "href": "infra",
+        "subitems": [
+            {"name": "Containers", "href": "containers"},
+            {"name": "Orquestração", "href": "orquestração"},
+            {"name": "Cloud", "href": "cloud"},
+            {"name": "Redes", "href": "redes"},
+            {"name": "Virtualização", "href": "virtualização"},
+            {"name": "Segurança", "href": "segurança"},
+            {"name": "Sistemas Operacionais", "href": "sistemas-operacionais"}
+        ]
+    },
+    {
+        "name": "DevOps",
+        "href": "/devops",
+        "subitems": [
+            {"name": "Cultura", "href": "cultura"},
+            {"name": "Versionamento", "href": "versionamento"},
+            {"name": "CI/CD", "href": "ci-cd"},
+            {"name": "Observabilidade", "href": "observabilidade"}
+        ]
+    }
+]

@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/ProjectsLayout.astro';
+import BingoComponent from '../../components/projects/bingo/BingoComponent.vue';
+---
+
+<Layout
+	title="Projetos"
+	description="Projetos"
+	pubDate={new Date('August 19 2024')}
+>
+	<BingoComponent client:load />
+</Layout>

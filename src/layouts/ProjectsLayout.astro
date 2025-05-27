@@ -12,33 +12,12 @@ const { title, description } = Astro.props;
 <html lang="pt-BR">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			.prose {
-				margin: 0;
-			}
-			.title {
-				margin-bottom: 1em;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-		</style>
 	</head>
 
 	<body>
 		<Header />
 		<main>
-			<article>
-				<div class="prose">
-					<div class="title">
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
+			<slot />
 		</main>
 		<Footer />
 	</body>
